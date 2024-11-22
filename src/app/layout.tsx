@@ -8,7 +8,9 @@ import Footer from '@/shared/components/Footer';
 const Layout: FC = () => (
     <>
         <Header />
-        <Outlet />
+        <main className={'main'}>
+            <Outlet />
+        </main>
         <Footer />
     </>
 )

@@ -8,14 +8,15 @@ import App from './app'
 
 import {BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";
+import {Toaster} from "@/shared/components/ui/sonner.tsx";
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
       <Provider store={store}>
           <BrowserRouter>
               <  App />
+              <Toaster />
           </BrowserRouter>
       </Provider>
-
   </StrictMode>,
 )

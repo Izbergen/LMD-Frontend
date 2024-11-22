@@ -5,7 +5,7 @@ const WhyChoose: FC = () => {
 
     return (
         <div className={'max-w-[920px] pb-32 flex flex-col items-center justify-center text-center text-[#171717]'}>
-            <h2 className={'max-w-[800px] mb-10 text-2xl '}>
+            <h2 className={'max-w-[800px] mb-10 text-2xl font-semibold'}>
                 Why Choose LMD?
             </h2>
             <p className={'mb-10 text-[#2F2424] font-light'}>
