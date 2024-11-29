@@ -23,7 +23,6 @@ export const useOrdersStore = create<OrdersState>(
             socket: null,
             initializeSocket: () => {
                 const socket = io('http://localhost:4000');
-
                 socket.on('orders:update', (orders: IOrder[]) => {
                     set({ orders });
                 });
@@ -41,7 +40,7 @@ export const useOrdersStore = create<OrdersState>(
                     if (updatedOrder) {
                         updatedOrder.status = status;
                         toast(`Order status updated for ${id}`, {
-                            description: `Status of Order:${id} changed to ${updatedOrder.status}. Date: ${Date.now()}`,
+                            description: `To ${status}. Date: ${Date.now().toString()}`,
                             action: {
                                 label: "Close",
                                 onClick: () => console.log('Close'),

@@ -15,13 +15,13 @@ import {buttonVariants} from "@/shared/components/ui/button.tsx";
 export default function OrdersTable() {
     const orders = useOrdersStore(state => state.orders);
     const updateOrderStatus = useOrdersStore(state => state.updateOrderStatus);
+    const initializeSocket = useOrdersStore(state => state.initializeSocket)
     useEffect(() => {
+        initializeSocket()
         setTimeout(() => {
             updateOrderStatus('JU-14a', "Cancelled" );
         },1000)
-    },
-    []
-    )
+    },[])
 
     return (
         <>

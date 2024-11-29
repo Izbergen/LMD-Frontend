@@ -1,5 +1,6 @@
 import {FC} from "react";
-import {Button} from "@/shared/components/ui/button.tsx";
+import {buttonVariants} from "@/shared/components/ui/button.tsx";
+import {Link} from "react-scroll";
 
 const Hero: FC = () => {
 
@@ -11,9 +12,14 @@ const Hero: FC = () => {
             <p className={'mb-10 text-[#2F2424] font-light'}>
                 At Rapid, we specialize in delivering fast, dependable services for companies of all sizes. Our efficient solutions help you meet customer demands with ease and confidence.
             </p>
-            <Button variant={'outline'} size={'lg'} className={'shadow rounded-3xl self-center'}>
+            <Link
+                offset={-100}
+                smooth={true}
+                duration={600}
+                to={'how-it-works'}
+                className={`shadow self-center ${buttonVariants({variant: "outline" ,size: 'lg' })} !rounded-3xl`}>
                 Learn More
-            </Button>
+            </Link>
         </div>
     )
 }

@@ -10,7 +10,7 @@ import { Input } from "@/shared/components/ui/input.tsx";
 import { Control, FieldValues, Path } from "react-hook-form";
 import { FC } from "react";
 
-interface IProps<T extends FieldValues> {
+export interface IFormField<T extends FieldValues> {
     control: Control<T>;
     fieldName: Path<T>;
     label: string;
@@ -18,7 +18,7 @@ interface IProps<T extends FieldValues> {
     placeholder: string;
 }
 
-const CustomFormField: FC<IProps<any>> = ({ control, fieldName, label, description, placeholder }) => {
+const CustomFormField: FC<IFormField<any>> = ({ control, fieldName, label, description, placeholder }) => {
     return (
         <FormField
             control={control}

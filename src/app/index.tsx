@@ -13,11 +13,8 @@ function App() {
     <Routes>
       <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
-
-          <Route path={'orders/'}>
-              <Route index element={<OrdersPage />} />
-              <Route path={':id'} element={<></>} />
-          </Route>
+          <Route path={'orders/'} element={<OrdersPage />} />
+          <Route path={'orders/:id'} element={<></>} />
       </Route>
         <Route path={'/auth/:id'} element={<AuthPage />} />
     </Routes>
