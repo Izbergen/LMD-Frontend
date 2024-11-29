@@ -1,1 +1,7 @@
-import {} from '@/modules/Forms/hooks/useFormSchema.ts'
+export default function OrderDetails() {
+    return (
+        <>
+        order details
+        </>
+    )
+}
