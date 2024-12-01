@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 import Navigation from "@/shared/components/Navigation";
 import { buttonVariants } from "@/shared/components/ui/button.tsx";
 import { Avatar, AvatarImage, AvatarFallback } from "@/shared/components/ui/avatar.tsx";
-import { useAppSelector } from "@/shared/store";
 import useScroll from "@/shared/hooks/useScroll.ts";
 
 const Header: FC = () => {
-    const isAuth = useAppSelector((state) => state.user.id);
-    const username = useAppSelector((state) => state.user.username);
+    const isAuth = localStorage.getItem('id');
+    const username = localStorage.getItem('username');
+
 
     const { direction, isTop } = useScroll();
     useEffect(() => {

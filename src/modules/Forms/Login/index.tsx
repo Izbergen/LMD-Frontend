@@ -11,14 +11,34 @@ import {useFormSchema} from "@/modules/Forms/hooks/useFormSchema.ts";
 import {formSchema , IFormSchema} from "./utils/formSchema.ts";
 import {FormFlieds} from "./utils/formFields.ts"
 
-
+import {useAppDispatch} from "@/shared/store";
+import {setUser} from '@/shared/store/reducers/userSlice.ts'
 
 const LogInForm: FC = () => {
-    const form = useFormSchema(formSchema)
+    const form = useFormSchema(formSchema);
 
+    const dispatch = useAppDispatch();
 
     const onSubmit = (data: IFormSchema) => {
-        console.log("Form data:", data);
+        if(data.email === 'alexcorner@gmail.com'){
+            dispatch(setUser({
+                id: '12345678',
+                isAdmin: true,
+                username: 'Alex Corner'
+            }))
+            localStorage.setItem('id','12345678' )
+            localStorage.setItem('username','Alex Corner' )
+        }
+        else{
+            dispatch(setUser({
+                id: '72612732',
+                isAdmin: false,
+                username: 'Ruslan'
+            }))
+            localStorage.setItem('username','Ruslan' )
+            localStorage.setItem('id','72612732' )
+        }
+
     };
     return (
         <Form {...form}>

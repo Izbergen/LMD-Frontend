@@ -12,16 +12,14 @@ import {useOrdersStore} from "@/modules/OrdersTable/store/orders.ts";
 import {useEffect} from "react";
 import {buttonVariants} from "@/shared/components/ui/button.tsx";
 
+
 export default function OrdersTable() {
+    const userID = localStorage.getItem("id");
     const orders = useOrdersStore(state => state.orders);
-    const updateOrderStatus = useOrdersStore(state => state.updateOrderStatus);
-    const initializeSocket = useOrdersStore(state => state.initializeSocket)
+    const startMockUpdates = useOrdersStore(state => state.startMockUpdates);
     useEffect(() => {
-        initializeSocket()
-        setTimeout(() => {
-            updateOrderStatus('JU-14a', "Cancelled" );
-        },1000)
-    },[])
+        startMockUpdates()
+    },[orders])
 
     return (
         <>
@@ -33,20 +31,22 @@ export default function OrdersTable() {
                         <TableHead className="w-[100px]">Order Id</TableHead>
                         <TableHead>Status</TableHead>
                         <TableHead>Item</TableHead>
+                        <TableHead>Description</TableHead>
                         <TableHead></TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
                     {
-                        orders.length > 0 ?
+                        orders.length > 0 && userID === '12345678' ?
                         orders.map((order) => (
                         <TableRow key={order.id}>
                             <TableCell className="font-medium">
                                 <Link to={'/'} >
                                     {order.id}
                                 </Link></TableCell>
-                            <TableCell>{order.item}</TableCell>
                             <TableCell>{order.status}</TableCell>
+                            <TableCell>{order.item}</TableCell>
+                            <TableCell>{order.description}</TableCell>
                             <TableCell className="text-right">{
                                 <Link className={buttonVariants({variant: 'outline'})} to={`/orders/${order.id}`}>Details</Link>
                             }</TableCell>
